@@ -6,7 +6,7 @@
 /*   By: mondrew <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 00:50:57 by mondrew           #+#    #+#             */
-/*   Updated: 2021/01/13 00:51:33 by mondrew          ###   ########.fr       */
+/*   Updated: 2021/01/17 10:42:51 by mondrew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@ class BrickWall : public ATarget {
 	public:
 
 		BrickWall(void);
-		// BrickWall(std::string const &type);
-		// BrickWall(BrickWall const &src);
-		// virtual ~BrickWall(void);
-
-		// BrickWall				&operator=(BrickWall const &rhs);
+		virtual ~BrickWall(void);
 
 		virtual ATarget		*clone(void) const;
 };

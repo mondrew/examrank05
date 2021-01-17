@@ -6,7 +6,7 @@
 /*   By: mondrew <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 23:00:05 by mondrew           #+#    #+#             */
-/*   Updated: 2021/01/13 00:27:25 by mondrew          ###   ########.fr       */
+/*   Updated: 2021/01/17 10:36:19 by mondrew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class ATarget {
 
 		std::string const	&getType(void) const;
 
-		virtual ATarget				*clone(void) const = 0;
+		virtual ATarget		*clone(void) const = 0;
 
 		void				getHitBySpell(ASpell const &spell) const;
 };

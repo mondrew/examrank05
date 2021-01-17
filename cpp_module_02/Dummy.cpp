@@ -6,7 +6,7 @@
 /*   By: mondrew <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 23:29:42 by mondrew           #+#    #+#             */
-/*   Updated: 2021/01/13 00:43:00 by mondrew          ###   ########.fr       */
+/*   Updated: 2021/01/17 10:37:16 by mondrew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 #include <string>
 
 Dummy::Dummy(void) : ATarget("Target Practice Dummy") {
+
+	return ;
+}
+
+Dummy::~Dummy(void) {
 
 	return ;
 }

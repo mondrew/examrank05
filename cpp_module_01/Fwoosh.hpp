@@ -6,7 +6,7 @@
 /*   By: mondrew <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 23:13:13 by mondrew           #+#    #+#             */
-/*   Updated: 2021/01/13 00:35:43 by mondrew          ###   ########.fr       */
+/*   Updated: 2021/01/17 10:37:25 by mondrew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ class Fwoosh : public ASpell {
 	public:
 
 		Fwoosh(void);
-		//Fwoosh(Fwoosh const &src);
-		//virtual ~Fwoosh(void);
-
-		//Fwoosh					&operator=(Fwoosh const &rhs);
+		virtual ~Fwoosh(void);
 
 		virtual ASpell			*clone(void) const;
 

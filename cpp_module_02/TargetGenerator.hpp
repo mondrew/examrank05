@@ -1,45 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ASpell.hpp                                         :+:      :+:    :+:   */
+/*   TargetGenerator.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mondrew <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 22:48:37 by mondrew           #+#    #+#             */
-/*   Updated: 2021/01/17 10:35:44 by mondrew          ###   ########.fr       */
+/*   Created: 2021/01/13 18:19:15 by mondrew           #+#    #+#             */
+/*   Updated: 2021/01/17 10:45:15 by mondrew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASPELL_HPP
-# define ASPELL_HPP
+#ifndef TARGET_GENERATOR_HPP
+# define TARGET_GENERATOR_HPP
 
 # include "ATarget.hpp"
 # include <string>
 
 class ATarget;
 
-class ASpell {
+class TargetGenerator {
 
-	protected:
+	private:
 
-		std::string		_name;
-		std::string		_effects;
+		ATarget		**_target_array;
+		int			_number_of_targets;
+
+		TargetGenerator(TargetGenerator const &src);
+		TargetGenerator		&operator=(TargetGenerator const &rhs);
 
 	public:
 
-		ASpell(void);
-		ASpell(std::string const &name, std::string const &effents);
-		ASpell(ASpell const &src);
-		virtual ~ASpell(void);
+		TargetGenerator(void);
+		~TargetGenerator(void);
 
-		ASpell					&operator=(ASpell const &rhs);
-
-		std::string				getName(void) const;
-		std::string				getEffects(void) const;
-
-		virtual ASpell			*clone(void) const = 0;
-
-		void					launch(ATarget const &target);
+		void		learnTargetType(ATarget *target);
+		void		forgetTargetType(std::string const &target);
+		ATarget		*createTarget(std::string const &target);
 };
 
 #endif

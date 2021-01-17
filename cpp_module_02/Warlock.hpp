@@ -6,7 +6,7 @@
 /*   By: mondrew <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 22:21:22 by mondrew           #+#    #+#             */
-/*   Updated: 2021/01/13 00:38:11 by mondrew          ###   ########.fr       */
+/*   Updated: 2021/01/17 10:48:09 by mondrew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 # define WARLOCK_HPP
 
 # include "ASpell.hpp"
+# include "SpellBook.hpp"
 # include "ATarget.hpp"
 # include <string>
 
 class ASpell;
 class ATarget;
+class SpellBook;
 
 class Warlock {
 
@@ -27,8 +29,7 @@ class Warlock {
 		std::string		_name;
 		std::string		_title;
 
-		ASpell			**_spell_array;
-		int				_number_of_spells;
+		SpellBook		_spellbook;
 
 		Warlock(void);
 		Warlock(Warlock const &src);

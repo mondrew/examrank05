@@ -6,7 +6,7 @@
 /*   By: mondrew <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 22:27:36 by mondrew           #+#    #+#             */
-/*   Updated: 2021/01/13 00:42:39 by mondrew          ###   ########.fr       */
+/*   Updated: 2021/01/17 10:40:53 by mondrew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ Warlock::~Warlock(void) {
 		delete this->_spell_array[i];
 		i++;
 	}
-	delete [] this->_spell_array;
+	if (this->_spell_array)
+		delete [] this->_spell_array;
 
 	return ;
 }
@@ -101,6 +102,18 @@ void				Warlock::learnSpell(ASpell *spell) {
 
 	int		i = 0;
 
+	if (spell == 0) // !!!
+		return ;
+
+	while (i < this->_number_of_spells)
+	{
+		if (this->_spell_array[i]->getName().compare(spell->getName()) == 0)
+			return ;
+		i++;
+	}
+
+	i = 0;
+
 	ASpell		**big = new ASpell *[this->_number_of_spells + 1];
 
 	while (i < this->_number_of_spells)
@@ -112,7 +125,8 @@ void				Warlock::learnSpell(ASpell *spell) {
 
 	this->_number_of_spells++;
 
-	delete [] this->_spell_array;
+	if (this->_spell_array) // !!!
+		delete [] this->_spell_array;
 
 	this->_spell_array = big;
 }
@@ -132,6 +146,16 @@ void				Warlock::forgetSpell(std::string const &spell) {
 	if (idx == this->_number_of_spells)
 		return ;
 
+	if (this->_number_of_spells == 1) // !!!
+	{
+		delete this->_spell_array[0];
+		delete [] this->_spell_array;
+		this->_spell_array = 0;
+		this->_number_of_spells = 0;
+
+		return ;
+	}
+
 	ASpell	**small = new ASpell *[this->_number_of_spells - 1];
 
 	while (i < this->_number_of_spells)
@@ -146,7 +170,8 @@ void				Warlock::forgetSpell(std::string const &spell) {
 
 	this->_number_of_spells--;
 
-	delete [] this->_spell_array;
+	if (this->_spell_array)
+		delete [] this->_spell_array;
 	this->_spell_array = small;
 }
 
@@ -163,5 +188,5 @@ void				Warlock::launchSpell(std::string const &spell, ATarget const &target){
 	if (idx == this->_number_of_spells)
 		return ;
 
-	target.getHitBySpell(*this->_spell_array[idx]);
+	this->_spell_array[idx]->launch(target);
 }
